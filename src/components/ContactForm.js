@@ -54,13 +54,6 @@ componentWillMount() {
     window.scrollTo(0,0);
   }
   componentDidMount() {
-    axios.get('https://alexvarenin.github.io/contact-form-data.json').then(response => {
-      store.dispatch({
-        type: 'UPDATE_CONTACT_FORM_DATA',
-        contactFormData: response.data
-      });
-    });
-
     let start = window.pageYOffset;
     let target = document.querySelector('.contact-form').getBoundingClientRect().top
     let change = target - start - document.querySelector('.header').clientHeight;
@@ -135,11 +128,13 @@ componentWillMount() {
 
   sendMessage = () => {
         this.setState({showSpinner: true});
-        let message = "Client name: " + this.state.name + "; " +
-        "\nemail: " + (this.state.emailValid && this.state.email || "incorrect") + " ;" +
-        "\nphone number: " + (this.state.telValid && this.state.tel || "incorrect") + " ;" +
-        "\ndescription: " + this.state.desc;
-        window.emailjs.send(this.props.contactFormData.server, this.props.contactFormData.templ, {"to_email": this.props.contactFormData.toEmail,"from_name": this.props.contactFormData.sender,"subject": this.props.contactFormData.subject,"message": message})
+        const email = this.state.emailValid ? this.state.email : 'no email';
+        const tel = this.state.telValid ? this.state.tel : 'no tel number'
+        axios.post('https://easy-motion-api.herokuapp.com/send-email', {
+          name: this.state.name,
+          contacts: email + ' ' + tel,
+          text: this.state.desc
+        })
         .then((response) => {
           this.setState({successPopup: true, successMessage: popupMess.success, showSpinner: false});
         }).catch( (error) => {
