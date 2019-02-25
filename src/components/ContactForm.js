@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
 import axios from 'axios';
-import store from '../store';
 import StatusPopup from './StatusPopup';
 import Spinner from './Spinner';
 
@@ -27,7 +24,7 @@ const popupMess = {
   error: 'Error during sending message. Please try again little bit later'
 }
 
-class ContactForm extends React.Component {
+export default class ContactForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -233,11 +230,3 @@ componentWillMount() {
 ContactForm.propTypes = {
   closeForm: PropTypes.func
  };
-
-const mapStateToProps = function(store) {
-  return {
-    contactFormData: store.formState.contactFormData
-  };
-}
-
-export default withRouter(connect(mapStateToProps)(ContactForm));
