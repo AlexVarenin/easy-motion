@@ -65,16 +65,16 @@ export default class Main extends React.Component {
     	</figure>
     	<div className='content'>
     		<div className='content__banner'>
-    		<h1 className='content__title'>WOW!<br/> You've found<br/> my studio</h1>
-    		<p className='content__sub-title'>Looks like you need<br/> some professional help</p>
-    	</div>
-    	<p className='content__text'>What can I propose:</p>
-    	<ul className='content__list'>
-        	<li>Creating realistic animation for you 3d model</li>
-        	<li>Making the best rigging you've ever seen</li>
-        	<li>Adding special effects</li>
-        	<li>A lot of another stuff in Maya for your video, cartoon or game (Unreal Engine 4)</li>
-    	</ul>
+    		  <h1 className='content__title'>WOW!<br/> You've found<br/> my studio</h1>
+      		<p className='content__sub-title'>Looks like you need<br/> some professional help</p>
+      	</div>
+      	<p className='content__text'>What can I propose:</p>
+      	<ul className='content__list'>
+          	<li>Creating realistic animation for you 3d model</li>
+          	<li>Making the best rigging you've ever seen</li>
+          	<li>Adding special effects</li>
+          	<li>A lot of another stuff in Maya for your video, cartoon or game (Unreal Engine 4)</li>
+      	</ul>
     	</div>
     	<ReactCSSTransitionGroup transitionName='footer-appearing' transitionAppear={false} transitionEnterTimeout={500} transitionLeaveTimeout={500} transitionEnter={true} transitionLeave={true}>
           { this.state.footerOpened && <Footer /> }
