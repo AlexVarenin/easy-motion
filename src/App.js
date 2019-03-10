@@ -5,6 +5,8 @@ import Main from './components/Main';
 import Contacts from './components/Contacts';
 import Section from './components/Section';
 import Gallery from './components/Gallery';
+import axios from 'axios';
+import store from './store';
 
 export default class App extends React.Component {
   render() {
@@ -21,5 +23,14 @@ export default class App extends React.Component {
         </div>
       </BrowserRouter>
       );
+  }
+
+  componentDidMount() {
+    axios.get('https://easy-motion-api.herokuapp.com/movies').then(response => {
+      store.dispatch({
+        type: 'UPDATE_PORTFOLIO_DATA',
+        portfolioData: response.data
+      });
+    });
   }
 }

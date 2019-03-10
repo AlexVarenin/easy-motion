@@ -29,12 +29,6 @@ class Portfolio extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://easy-motion-api.herokuapp.com/movies').then(response => {
-      store.dispatch({
-        type: 'UPDATE_PORTFOLIO_DATA',
-        portfolioData: response.data
-      });
-    });
     window.addEventListener('scroll', this.handleScroll);
    }
 

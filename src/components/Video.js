@@ -36,12 +36,6 @@ class Video extends React.Component {
 
   componentDidMount() {
     this.blockScroll(true);
-    axios.get('https://alexvarenin.github.io/portfolio-data.json').then(response => {
-      store.dispatch({
-        type: 'UPDATE_PORTFOLIO_DATA',
-        portfolioData: response.data
-      });
-    });
     this.setState({
       videoId: this.props.match.params.id
     });

@@ -162,7 +162,7 @@ componentWillMount() {
               />
               <label
                 htmlFor='name'
-                className={this.state.nameValid === false && 'form__error' || 'form__label'}
+                className={this.state.nameValid === false ? 'form__error' : 'form__label'}
               >{this.state.labelName}</label>
               <span></span>
             </div>
@@ -178,7 +178,7 @@ componentWillMount() {
                 />
                 <label
                   htmlFor='mail'
-                  className={this.state.emailValid === false && 'form__error' || 'form__label'}
+                  className={this.state.emailValid === false ? 'form__error' : 'form__label'}
                 >{this.state.labelEmail}</label>
                 <span></span>
               </div>
@@ -194,7 +194,7 @@ componentWillMount() {
                 />
                 <label
                   htmlFor='phone'
-                  className={this.state.telValid === false && 'form__error' || 'form__label'}
+                  className={this.state.telValid === false ? 'form__error' : 'form__label'}
                 >{this.state.labelTel}</label>
                 <span></span>
               </div>
@@ -212,12 +212,12 @@ componentWillMount() {
                 <span></span>
                 <label
                   htmlFor='description'
-                  className={this.state.descValid === false && 'form__error' || 'form__label'}
+                  className={this.state.descValid === false ? 'form__error' : 'form__label'}
                 >{this.state.labelDesc}</label>
               </div>
             <div className='form__buttons'>
                 <button className="button button--form-cancel" onClick={this.closeForm} >Cancel</button>
-                <button className={`button button--form-send${isDisabled && ' button--disabled' || ''}`} onClick={this.sendMessage} disabled={isDisabled}>Send</button>
+                <button className={`button button--form-send${isDisabled ? ' button--disabled' : ''}`} onClick={this.sendMessage} disabled={isDisabled}>Send</button>
             </div>
           </div>
           {this.state.successMessage && <StatusPopup message={{text: this.state.successMessage, style: this.state.successPopup}} closePopup={this.closePopup}/>}
