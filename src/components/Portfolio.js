@@ -19,11 +19,18 @@ class Portfolio extends React.Component {
       isLoading: true,
       breadcrumbsClass: ''
     };
+    this.minImgCounter = 0;
   }
 
   handleImageLoaded = e => {
     e.target.parentNode.parentNode.children[1].style.display = 'none';
-    this.setState( {isLoading: false});
+  }
+
+  handleMinImageLoaded = (arrLength) => {
+    this.minImgCounter++;
+    if (this.minImgCounter === arrLength) {
+      this.setState( {isLoading: false});
+    }
   }
 
   componentDidMount() {
@@ -53,7 +60,7 @@ class Portfolio extends React.Component {
           }
           <h1>{ categories[this.props.title].title}</h1>
               {
-                this.props.portfolioData.filter( el => el.category.indexOf(categories[this.props.title].id) >= 0).map( (item, index) => 
+                this.props.portfolioData.filter( el => el.category.indexOf(categories[this.props.title].id) >= 0).map( (item, index, arr) =>
                   <Link className="gallery__item-wrapper" to={`/${this.props.section}/${this.props.subsection}/${item.id}`} key={index}>
                     <div className='gallery__item' >
                       <div className='gallery__item-cover'>
@@ -69,6 +76,7 @@ class Portfolio extends React.Component {
                       <div className='gallery__item-cover--minimal'>
                         <img
                           src={`https://img.youtube.com/vi/${item.id}/default.jpg`}
+                          onLoad={() => this.handleMinImageLoaded(arr.length)}
                           alt='youtube pic min'
                         />
                         <div className='gallery__item-title'>
