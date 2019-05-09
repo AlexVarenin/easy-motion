@@ -4,9 +4,6 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import WellcomeSpinner from './WellcomeSpinner';
 
-import axios from 'axios';
-import store from '../store';
-
 
 const categories = {
     animation: {id: 1, title: 'Animation'},
@@ -24,8 +21,9 @@ class Portfolio extends React.Component {
     };
   }
 
-  handleImageLoaded = () => {
-      this.setState( {isLoading: false});
+  handleImageLoaded = e => {
+    e.target.parentNode.parentNode.children[1].style.display = 'none';
+    this.setState( {isLoading: false});
   }
 
   componentDidMount() {
@@ -61,8 +59,17 @@ class Portfolio extends React.Component {
                       <div className='gallery__item-cover'>
                         <img
                           src={`https://img.youtube.com/vi/${item.id}/maxresdefault.jpg`}
-                          onLoad={this.handleImageLoaded}
+                          onLoad={($event) => this.handleImageLoaded($event)}
                           alt='youtube pic'
+                        />
+                        <div className='gallery__item-title'>
+                          <h3>{item.title}</h3>
+                        </div>
+                      </div>
+                      <div className='gallery__item-cover--minimal'>
+                        <img
+                          src={`https://img.youtube.com/vi/${item.id}/default.jpg`}
+                          alt='youtube pic min'
                         />
                         <div className='gallery__item-title'>
                           <h3>{item.title}</h3>

@@ -553,6 +553,18 @@ body textarea {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+}
+
+.gallery__item-cover--minimal {
+  position: absolute;
+  top: 0;
+  left: 3px;
+  width: calc(20vw - 6px);
+  height: calc(20vw - 6px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
 }
 
@@ -593,27 +605,33 @@ body textarea {
 	opacity: .1;
 }
 
-.gallery__item img {
+.gallery__item-cover--minimal img {
+  height: 100%;
+  transform: scale(1.4);
+  filter: blur(5px);
+}
+
+.gallery__item-cover img {
 	height: 100%;
 	animation: bluring-back .2s linear;
 	animation-fill-mode: forwards;
 }
 
-.gallery__item:hover img{
+.gallery__item-cover:hover img{
 	animation: bluring .2s linear;
 	animation-fill-mode: forwards;
 }
 
 @keyframes bluring {
-  0% { filter: brightness(1); };
-  50% { filter: brightness(0.9) blur(2px); transform: scale(1.05);}
-  100% { filter: brightness(0.7); transform: scale(1.1);}
+  0% { filter: brightness(1); }
+  50% { filter: brightness(0.9) blur(2px); transform: scale(1.05); }
+  100% { filter: brightness(0.7); transform: scale(1.1); }
 } 
 
 @keyframes bluring-back {
-  0% { filter: brightness(0.7); transform: scale(1.1);}
-  50% { filter: brightness(0.9) blur(2px); transform: scale(1.05);}
-  100% { filter: brightness(1); };
+  0% { filter: brightness(0.7); transform: scale(1.1); }
+  50% { filter: brightness(0.9) blur(2px); transform: scale(1.05); }
+  100% { filter: brightness(1); }
 } 
 
 .list-appearing-enter {
