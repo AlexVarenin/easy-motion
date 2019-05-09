@@ -22,7 +22,7 @@ class Portfolio extends React.Component {
   }
 
   handleImageLoaded = e => {
-    /*e.target.parentNode.parentNode.children[1].style.display = 'none';*/
+    e.target.parentNode.parentNode.children[1].style.display = 'none';
     this.setState( {isLoading: false});
   }
 
