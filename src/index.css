@@ -565,7 +565,6 @@ body textarea {
   display: flex;
   align-items: center;
   justify-content: space-around;
-
 }
 
 .gallery__item::before {
@@ -1279,8 +1278,8 @@ body textarea {
 		height: 25vw;
 	}
 
-	.gallery__item-cover {
-		margin: 3px;
+	.gallery__item-cover,
+  .gallery__item-cover--minimal {
 		width: calc(25vw - 6px);
 		height: calc(25vw - 6px);
 	}
@@ -1592,7 +1591,13 @@ body textarea {
 		margin: 5px 10px;
 		width: calc(100vw - 20px);
 		height: calc(100vw - 10px);
-	} 
+	}
+
+  .gallery__item-cover--minimal {
+    left: 10px;
+    width: calc(100vw - 20px);
+    height: calc(100vw - 10px);
+  }
 
 	.gallery__item::after {
 		top: 40%;
