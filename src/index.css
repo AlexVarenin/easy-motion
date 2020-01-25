@@ -262,6 +262,8 @@ body textarea {
 
 .content__img--min {
   background: #000000;
+  opacity: 1;
+  transition: .5s;
 }
 
 .content__img img {
