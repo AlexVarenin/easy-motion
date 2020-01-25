@@ -1,9 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1362 1070">
-  <filter id="b">
-    <feGaussianBlur stdDeviation="1"/>
-  </filter>
   <path fill="#" d="M0 0h1362v1069H0z"/>
-  <g filter="url(#b)" fill-opacity=".5">
+  <g fill-opacity=".5">
     <path fill="#ead1b9" d="M263.4 1034.8l835.2-846 239.5 963z"/>
     <path d="M98.4 1151.8L923.1-82.5-82.5 13.3z"/>
     <path d="M-82.5 880.5L800.7 737 130.3-82.5z"/>
