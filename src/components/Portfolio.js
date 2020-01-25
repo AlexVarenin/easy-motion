@@ -20,11 +20,11 @@ class Portfolio extends React.Component {
 
   handleImageLoaded = e => {
     e.target.parentNode.parentNode.children[1].style.display = 'none';
-  }
+  };
 
   handleMinImageLoaded = e => {
     e.target.parentNode.children[0].style.display = 'none';
-  }
+  };
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
