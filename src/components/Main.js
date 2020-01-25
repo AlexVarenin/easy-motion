@@ -69,7 +69,7 @@ export default class Main extends React.Component {
           alt='me'
         />
     	</figure>
-      <figure className='content__img' style={{filter: 'blur(' + this.state.blur + 'px)', opacity: this.state.opacity}}>
+      <figure className='content__img content__img--min' style={{filter: 'blur(' + this.state.blur + 'px)', opacity: this.state.opacity}}>
         <img
           style={{transform: 'scale('+ this.state.scale +')'}}
           src='banner-min.svg'
