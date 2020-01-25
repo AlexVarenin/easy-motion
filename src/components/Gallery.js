@@ -8,7 +8,7 @@ const galleryData = [
   'rig',
   'vfx',
   'gaming',
-]
+];
 
 
 export default class Gallery extends React.Component {

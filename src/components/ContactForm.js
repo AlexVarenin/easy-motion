@@ -112,7 +112,7 @@ componentWillMount() {
   }
 
   telValid ( tel ) {
-    if (tel.length > 0 && ~tel.search(/^([+]?[0-9\s-\(\)]{3,25})*$/i))
+    if (tel.length > 0 && ~tel.search(/^([+]?[0-9\s-()]{3,25})*$/i))
       return true;
     return false
   }

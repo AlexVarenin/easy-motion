@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import WellcomeSpinner from './WellcomeSpinner';
-
 
 const categories = {
     animation: {id: 1, title: 'Animation'},
@@ -16,21 +14,16 @@ class Portfolio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
       breadcrumbsClass: ''
     };
-    this.minImgCounter = 0;
   }
 
   handleImageLoaded = e => {
     e.target.parentNode.parentNode.children[1].style.display = 'none';
   }
 
-  handleMinImageLoaded = (arrLength) => {
-    this.minImgCounter++;
-    if (this.minImgCounter === arrLength) {
-      this.setState( {isLoading: false});
-    }
+  handleMinImageLoaded = e => {
+    e.target.parentNode.children[0].style.display = 'none';
   }
 
   componentDidMount() {
@@ -74,9 +67,12 @@ class Portfolio extends React.Component {
                         </div>
                       </div>
                       <div className='gallery__item-cover--minimal'>
+                        <div className="inner-spinner">
+                          <div className="spinner"></div>
+                        </div>
                         <img
                           src={`https://img.youtube.com/vi/${item.id}/default.jpg`}
-                          onLoad={() => this.handleMinImageLoaded(arr.length)}
+                          onLoad={($event) => this.handleMinImageLoaded($event)}
                           alt='youtube pic min'
                         />
                         <div className='gallery__item-title'>
@@ -86,9 +82,6 @@ class Portfolio extends React.Component {
                     </div>
                   </Link>) }
           </div>
-          { this.state.isLoading && <WellcomeSpinner
-            customClass={'no-amination'}
-          />}
         </div>
         );
    }
