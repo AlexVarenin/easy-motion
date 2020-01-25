@@ -2,10 +2,6 @@ import React from 'react';
 import YouTube from "react-youtube";
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import WellcomeSpinner from './WellcomeSpinner';
-
-import axios from 'axios';
-import store from '../store';
 
 const categories = {
     animation: 1,
@@ -21,7 +17,6 @@ class Video extends React.Component {
       playerWidth: '100%',
       playerHeight: '100%',
       videoId: '',
-      isLoading: true,
       arrowLeft: {
         display: 'none'
       },
@@ -144,9 +139,7 @@ class Video extends React.Component {
     }
   }
 
-  onPlay = () => {
-    this.setState({isLoading: false});
-  }
+  onPlay = () => {};
 
   render() {
     const videoItem = this.sectionVideos.filter(item => item.id === this.state.videoId)[0];
@@ -189,9 +182,6 @@ class Video extends React.Component {
             <p>{description}</p>
           </div>
         </div>
-        { this.state.isLoading && <WellcomeSpinner
-            customClass={'no-amination'}
-          />}
       </div>
       );
   }
