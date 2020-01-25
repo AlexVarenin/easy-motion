@@ -381,6 +381,10 @@ body textarea {
 	z-index: -2;
 }
 
+.animation__background--min img {
+  filter: blur(1px);
+}
+
 .animation__background div{
 	display: flex;
 	align-items: center;
