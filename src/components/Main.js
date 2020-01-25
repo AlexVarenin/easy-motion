@@ -41,7 +41,7 @@ export default class Main extends React.Component {
         opacity: 1 - 2 * sFactor > 0.05 ? 1 - 2 * sFactor : 0.05, 
         scale: 1 + sFactor < 1.5 ? 1 + sFactor : 1.5 
       } );
-  }
+  };
 
   handleImageLoaded = () => {
     if (Date.now() - this.startTimer  > 1000) {
@@ -50,19 +50,33 @@ export default class Main extends React.Component {
     } else {
       this.setState( {isLoading: false});
     }
-  }
+  };
+
+  handleMainImageLoaded = e => {
+   e.target.parentNode.parentNode.children[1].style.display = 'none';
+  };
 
  render() {
+
+
     return (
     <div>
-    	<figure className='content__img' style={{filter: 'blur(' + this.state.blur + 'px)', opacity: this.state.opacity}}>
+    	<figure className='content__img' style={{backgroundImage: 'url(background.svg)', filter: 'blur(' + this.state.blur + 'px)', opacity: this.state.opacity}}>
       	<img
           style={{transform: 'scale('+ this.state.scale +')'}}
           src='banner.png'
-          onLoad={this.handleImageLoaded}
+          onLoad={($event) => this.handleMainImageLoaded($event)}
           alt='me'
         />
     	</figure>
+      <figure className='content__img' style={{filter: 'blur(' + this.state.blur + 'px)', opacity: this.state.opacity}}>
+        <img
+          style={{transform: 'scale('+ this.state.scale +')'}}
+          src='banner-min.svg'
+          onLoad={this.handleImageLoaded}
+          alt='me'
+        />
+      </figure>
     	<div className='content'>
     		<div className='content__banner'>
     		  <h1 className='content__title'>WOW!<br/> You've found<br/> my studio</h1>
@@ -86,4 +100,6 @@ export default class Main extends React.Component {
    );
  }
    
-} 
+}
+
+
