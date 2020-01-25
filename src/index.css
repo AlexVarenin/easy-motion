@@ -256,12 +256,12 @@ body textarea {
 	top: 0;
 	height: 100vh;
 	width: 100vw;
-	z-index: -2;
+	z-index: -1;
 	overflow: hidden;
 }
 
 .content__img--min {
-  z-index: -1;
+  background: #000000;
 }
 
 .content__img img {
