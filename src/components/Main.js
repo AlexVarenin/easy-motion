@@ -12,7 +12,8 @@ export default class Main extends React.Component {
       opacity: 1,
       scale: 1,
       isLoading: true,
-      isPerforming: false
+      isPerforming: false,
+      minBanner: true
     };
     this.startTimer = null;
   }
@@ -53,7 +54,8 @@ export default class Main extends React.Component {
   };
 
   handleMainImageLoaded = e => {
-   e.target.parentNode.parentNode.children[1].style.display = 'none';
+    e.target.parentNode.parentNode.children[1].style.opacity = '0';;
+    setTimeout(() => {this.setState( {minBanner: false});}, 550)
   };
 
  render() {
@@ -69,6 +71,7 @@ export default class Main extends React.Component {
           alt='me'
         />
     	</figure>
+      { this.state.minBanner &&
       <figure className='content__img content__img--min' style={{filter: 'blur(' + this.state.blur + 'px)', opacity: this.state.opacity}}>
         <img
           style={{transform: 'scale('+ this.state.scale +')'}}
@@ -77,6 +80,8 @@ export default class Main extends React.Component {
           alt='me'
         />
       </figure>
+      }
+
     	<div className='content'>
     		<div className='content__banner'>
     		  <h1 className='content__title'>WOW!<br/> You've found<br/> my studio</h1>
