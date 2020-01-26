@@ -54,7 +54,7 @@ export default class Main extends React.Component {
   };
 
   handleMainImageLoaded = e => {
-    e.target.parentNode.parentNode.children[1].style.opacity = '0';;
+    e.target.parentNode.parentNode.children[1].style.opacity = '0';
     setTimeout(() => {this.setState( {minBanner: false});}, 550)
   };
 
