@@ -39,11 +39,14 @@ export default class Section extends React.Component {
 		this.state = {
 		  isLoading: true
 		};
+		this.loadCounter = 0;
 	}
 
 	handleImageLoaded = () => {
-      this.setState( {isLoading: false});
-	}
+	    if (++this.loadCounter === sectionData.length) {
+        this.setState( {isLoading: false});
+      }
+	};
 
   handleMaimImageLoaded = e => {
     e.target.parentNode.parentNode.parentNode.children[1].style.display = 'none';
