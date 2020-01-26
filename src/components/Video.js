@@ -16,13 +16,7 @@ class Video extends React.Component {
     this.state = {
       playerWidth: '100%',
       playerHeight: '100%',
-      videoId: '',
-      arrowLeft: {
-        display: 'none'
-      },
-      arrowRight: {
-        display: 'none'
-      }
+      videoId: ''
     };
     this.touchStart = 0;
     this.timer = null;
@@ -81,7 +75,7 @@ class Video extends React.Component {
     }
     clearTimeout(this.timer);
     this.timer = setTimeout(this.onPlay, 2000);
-  }
+  };
 
   prevVideo = () => {
     this.setState({isLoading: true});
@@ -95,49 +89,30 @@ class Video extends React.Component {
     }
     clearTimeout(this.timer);
     this.timer = setTimeout(this.onPlay, 2000);
-  }
+  };
 
   handleTouchStart = (event) => {
     this.touchStart = event.changedTouches[0].pageX;
-  }
+  };
 
   handleTouchMove = (event) => {
-    if (this.touchStart > event.changedTouches[0].pageX) {
-      this.setState({
-        arrowLeft: {
-          display: 'none'
-        },
-        arrowRight: {
-          top: event.changedTouches[0].pageY - 50 - window.pageYOffset,
-          left: event.changedTouches[0].pageX - 50,
-          display: 'block'
-        },
-      })
-    }
-    else if (this.touchStart  < event.changedTouches[0].pageX) {
-      this.setState({
-        arrowRight: {
-          display: 'none'
-        },
-        arrowLeft: {
-          top: event.changedTouches[0].pageY - 50 - window.pageYOffset,
-          left: event.changedTouches[0].pageX - 50, 
-        },
-      })
-    }
-  }
+    this.setState({
+      slider: {
+        left: event.changedTouches[0].pageX - this.touchStart,
+      },
+    })
+  };
 
   handleTouchEnd = (event) => {
     this.setState({
-        arrowRight: {display: 'none'},
-        arrowLeft: {display: 'none'}
-    })
+      slider: {top: 0, left: 0}
+    });
     if (this.touchStart - 10 > event.changedTouches[0].pageX) {
       this.nextVideo();
     } else if (this.touchStart + 10 < event.changedTouches[0].pageX) {
       this.prevVideo()
     }
-  }
+  };
 
   onPlay = () => {};
 
@@ -150,6 +125,7 @@ class Video extends React.Component {
     return (
       <div
         className='popup-layer popup-layer--video'
+
         onTouchStart={event => this.handleTouchStart(event)}
         onTouchMove={event => this.handleTouchMove(event)}
         onTouchEnd={event => this.handleTouchEnd(event)}
@@ -158,30 +134,32 @@ class Video extends React.Component {
           <span className='close-btn close-btn__first'></span>
           <span className='close-btn close-btn__second'></span>
         </div>
-        <a className="video__button video__button--left" onClick={this.prevVideo}><i className="fas fa-chevron-left" /></a>
-        <a className="video__button video__button--right" onClick={this.nextVideo}><i className="fas fa-chevron-right" /></a>
-        <div
-          className="video__button-mob"
-          style={this.state.arrowLeft}
-        ><i className="fas fa-chevron-left" /></div>
-        <div
-          className="video__button-mob"
-          style={this.state.arrowRight}
-        ><i className="fas fa-chevron-right" /></div>
-        <div className='video'>
-          <div className='video__video'>
-           <YouTube 
-              videoId={this.props.match.params.id}
-              opts={opt}
-              onReady={this.onPlayerReady}
-              onPlay={this.onPlay}
-            />
-          </div>
-          <div className='video__desc'>
-            <h3><i className="fas fa-play-circle" /> {title}</h3>
-            <p>{description}</p>
+
+        <div className='video__slider' style={this.state.slider}>
+
+          <a className="video__button video__button--left" onClick={this.prevVideo}><i className="fas fa-chevron-left" /></a>
+          <a className="video__button video__button--right" onClick={this.nextVideo}><i className="fas fa-chevron-right" /></a>
+
+          <div className='video'>
+            <div className='video__container'>
+              <div className='video__video'>
+                <YouTube
+                  videoId={this.props.match.params.id}
+                  opts={opt}
+                  onReady={this.onPlayerReady}
+                  onPlay={this.onPlay}
+                />
+              </div>
+              <div className='video__desc'>
+                <h3><i className="fas fa-play-circle" /> {title}</h3>
+                <p>{description}</p>
+              </div>
+            </div>
+
           </div>
         </div>
+
+
       </div>
       );
   }
