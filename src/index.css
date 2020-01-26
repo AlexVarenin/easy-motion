@@ -901,9 +901,9 @@ body textarea {
 	top: 10px;
 	right: 10px;
 	width: 35px;
-  	height: 35px;
-  	cursor: pointer;
-  	transition: transform .1s linear;
+  height: 35px;
+  cursor: pointer;
+  transition: transform .1s linear;
 }
 
 .close-btn {
@@ -970,7 +970,7 @@ body textarea {
 }
 
 .contacts__link:hover {
-	transform: scale(1.1);
+	opacity: .6;
 }
 
 .contacts__link--mail {
