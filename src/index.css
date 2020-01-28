@@ -693,14 +693,6 @@ body textarea {
 	background: none;
 }
 
-.video__slider {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
 .inner-spinner {
   position: absolute;
   top: 0;
@@ -832,6 +824,15 @@ body textarea {
 	align-items: stretch;
 	justify-content: space-around;
 	position: relative;
+}
+
+.video__slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
 }
 
 .video__container {
