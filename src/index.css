@@ -837,6 +837,11 @@ body textarea {
 .video__container {
   box-shadow: 0px 0px 100px -20px rgba(255,255,255,.3);
   background: #000000;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-around;
+  position: relative;
 }
 
 .video__button {
@@ -904,6 +909,7 @@ body textarea {
   height: 35px;
   cursor: pointer;
   transition: transform .1s linear;
+  z-index: 2;
 }
 
 .close-btn {
@@ -1650,11 +1656,11 @@ body textarea {
     	border-bottom-width: 8vw;
 	}
 
-	.video {
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+  .video__container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
 	.video__button {
 		display: none;
@@ -1700,8 +1706,7 @@ body textarea {
 		top: 5px;
 		right: 5px;
 		width: 25px;
-	  	height: 25px;
-	  	z-index: 2;
+    height: 25px;
 	}
 
 	.contact__banner {
